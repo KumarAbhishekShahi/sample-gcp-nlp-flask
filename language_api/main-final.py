@@ -34,7 +34,7 @@ def upload_text():
 
     # Analyse sentiment using Sentiment API call
     #sentiment = analyze_text_sentiment(text)[0].get('sentiment score')
-    sentiment = gcp_analyze_syntax(text)[0].get('sentiment score')
+    sentiment = gcp_analyze_syntax(text)[0].word.get('Label')
 
     # Assign a label based on the score
     overall_sentiment = 'unknown'
