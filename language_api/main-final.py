@@ -37,13 +37,7 @@ def upload_text():
     sentiment = gcp_analyze_syntax(text)[0].get('Label')
 
     # Assign a label based on the score
-    overall_sentiment = 'unknown'
-    if sentiment > 0:
-        overall_sentiment = 'positive'
-    if sentiment < 0:
-        overall_sentiment = 'negative'
-    if sentiment == 0:
-        overall_sentiment = 'neutral'
+    #removed something
 
     # Create a Cloud Datastore client.
     datastore_client = datastore.Client()
@@ -65,7 +59,7 @@ def upload_text():
     entity = datastore.Entity(key)
     entity["text"] = text
     entity["timestamp"] = current_datetime
-    entity["sentiment"] = overall_sentiment
+    entity["sentiment"] = sentiment
 
     # Save the new entity to Datastore.
     datastore_client.put(entity)
